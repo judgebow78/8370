@@ -417,6 +417,61 @@ main{padding-top:clamp(14px,2vw,22px);padding-bottom:36px}
 @media(max-width:620px){.brand-name{font-size:1.8rem}}
 @media(max-width:520px){.brand-name{font-size:1.47rem}}
 </style>
+
+<style id="8370-emblem-light-reflection">
+/* Efek pantulan cahaya pada emblem 8370 — tanpa mengubah elemen lain */
+.brand .brand-mark{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+}
+.brand .brand-mark::before{
+  content:"";
+  position:absolute;
+  z-index:0;
+  inset:1px;
+  border-radius:inherit;
+  pointer-events:none;
+  background:
+    linear-gradient(145deg,
+      rgba(255,255,255,.38) 0%,
+      rgba(255,255,255,.16) 13%,
+      rgba(255,255,255,.035) 34%,
+      transparent 53%);
+  box-shadow:
+    inset 0 1px 1px rgba(255,255,255,.34),
+    inset 0 -2px 5px rgba(70,0,0,.18);
+}
+.brand .brand-mark::after{
+  content:"";
+  position:absolute;
+  z-index:1;
+  top:-45%;
+  left:-115%;
+  width:62%;
+  height:190%;
+  pointer-events:none;
+  transform:rotate(27deg);
+  background:linear-gradient(90deg,
+    transparent 0%,
+    rgba(255,255,255,.04) 25%,
+    rgba(255,255,255,.48) 48%,
+    rgba(255,244,210,.18) 58%,
+    transparent 100%);
+  filter:blur(1px);
+  animation:emblemLightReflection 6.5s ease-in-out infinite;
+}
+@keyframes emblemLightReflection{
+  0%,58%{left:-115%;opacity:0}
+  64%{opacity:.9}
+  82%{left:155%;opacity:.75}
+  90%,100%{left:155%;opacity:0}
+}
+@media(prefers-reduced-motion:reduce){
+  .brand .brand-mark::after{animation:none;display:none}
+}
+</style>
+
 </head>
 <body>
 <header class="hero">
